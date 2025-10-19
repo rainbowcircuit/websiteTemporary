@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Ayn Inserto | Bio</title>
+
+
+    </head>
+    <body>
+
+        <div>
+                <p class="navigation"><a href="index.html">Home</a></p>
+                <p class="navigation"><a href="bio.html">Bio</a></p>
+                <p class="navigation"><a href="music.html">Music</a></p>
+                <p class="navigation"><a href="dates.html">Dates</a></p>
+
+        </div>
+
+        <img src="images/biomain.jpeg" style="width: 600px" id="bio1Image">
+        <img src="images/aijomain.jpeg" style="width: 600px" id="bio2Image">
+
+        <button class="textButton" id="bio1Button">About Ayn Inserto</button>
+        <button class="textButton" id="bio2Button">About the AIJO</button>
+
+        
+        <p id="bio1">
+            "There's an energetic creative force on the horizon named 
+            Ayn Inserto, and... she's Maria Schneider on steroids." 
+            Harvey Siders, Jazz Times.
+            <br><br>
+
+            Ayn Inserto is a groundbreaking composer who is emerging as one of the preeminent voices 
+            of her generation. She received her Master of Music degree in Jazz Composition 
+            from the New England Conservatory and is a winner of the IAJE/ASCAP Emerging Composer Commission 
+            honoring Frank Foster and the ASCAP Young Jazz Composers' Awards. She was picked by Bob Brookmeyer to 
+            study jazz composition as his protege. Her music has been performed at Carnegie Hall, 
+            Jazz at Lincoln Center Shanghai, Dizzy's Club (Jazz at Lincoln Center, NYC), the Berklee Performance Center, 
+            Boston Symphony Hall, JEN Conferences, Reno Jazz Festival, Billy Higgins Jazz Festival, 
+            New England Conservatory of Music, Brown University, Montreux Jazz Festival, the Umbria Jazz Festival, 
+            McGill University, Senigallia, Italy, Terni Jazz Festival, the Sant' Elpidio Jazz Festival, 
+            and the Fano Jazz Festival. Inserto has been commissioned by Carnegie Hall for the NYO Jazz Ensemble, 
+            The Jazz Education Network, ASCAP/IAJE, the Commission Project for JazzMN, Madison Technical College, 
+            Amherst College, Cal State University East Bay, Los Medanos College, Foxboro High School, Harvard Jazz Band, 
+            Marin Catholic High School, Fairfield High School, and Jennifer Wharton. She has given masterclasses and 
+            clinics at the Panama Jazz Festival, Brown University, IMEP Paris College of Music, International College of Music 
+            in Kuala Lumpur, Malaysia, Seoul Jazz Academy, Tokyo School of Music, Singapore Polytechnic, Arcevia Jazz Seminar, 
+            Rossini Conservatory of Music, the National Youth Jazz Orchestra from London, UK and the Sydney Conservatorium. 
+            <br><br>
+            
+            
+        </p>
+
+        <p id="bio2">
+            "There's an energetic creative force on the horizon named 
+            Ayn Inserto, and... she's Maria Schneider on steroids." 
+            Harvey Siders, Jazz Times.
+            <br><br>
+
+            blachbasdkfahsldkjfalsfkjahsldfkajsdhfadsfdsasdfasdf
+            <br><br>
+            
+            
+        </p>
+
+        <script>
+
+            
+            let bio1 = document.getElementById("bio1");
+            let bio2 = document.getElementById("bio2");
+            let bio1Image = document.getElementById("bio1Image");
+            let bio2Image = document.getElementById("bio2Image");
+
+            let bio1Button = document.getElementById("bio1Button");
+            let bio2Button = document.getElementById("bio2Button");
+
+            bio1.style.display = 'block';
+            bio2.style.display = 'none';
+            bio1Image.style.display = 'block';
+            bio2Image.style.display = 'none';
+
+            bio1Button.addEventListener("click", () => {
+                bio1.style.display = 'block';
+                bio2.style.display = 'none';
+                bio1Image.style.display = 'block';
+                bio2Image.style.display = 'none';
+
+            });
+
+            bio2Button.addEventListener("click", () => {
+                bio1.style.display = 'none';
+                bio2.style.display = 'block';
+                bio1Image.style.display = 'none';
+                bio2Image.style.display = 'block';
+
+            });
+
+        </script>
+    </body>
+</html>
+
+
