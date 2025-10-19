@@ -6,6 +6,10 @@ body {
     color: #221E13;
     margin-left: auto;
     margin-right: auto;
+}
+
+h2 {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
 
@@ -49,13 +53,26 @@ img {
     cursor: pointer;
 }
 
+/* Music Page */ 
+.albumCoverArt {
+    margin-right: 20px;
+    float: left;
+}
+
+.albumTitle {
+    text-align: left;
+}
+
+
+
+/* Events Page */ 
+
 .dates {
     width: 70px;
     margin: 0px;
     float: left;
 
 }
-
 
 #month {
     text-align: center;
