@@ -1,9 +1,11 @@
 
 
 
+/*
+This read/write is using JSONBIN.io API. 
+*/
 
 const JSONKEY = '$2a$10$/gwTqpnXynsOyEwQx2cU/OaSa8UV.jLFntDbhUOck/9twV8sx5hV2';
-
 
 
 

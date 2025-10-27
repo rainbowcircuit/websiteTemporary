@@ -1,5 +1,5 @@
 body {
-    background-color: #EDE6D6;
+    background-color: #EEEEEE;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     max-width: 600px;
@@ -8,7 +8,7 @@ body {
     margin-right: auto;
 }
 
-h2 {
+h1 {
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
@@ -20,6 +20,7 @@ p {
 
 a {
     color: black;
+    text-decoration-line: none;
 }
 
 img {
@@ -34,9 +35,10 @@ img {
 }
 
 .navigation {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
   display: inline;
-  margin: 20px;
-  padding: 0;
+  margin: 30px;
 }
 
 .textButton {
@@ -67,25 +69,27 @@ img {
 
 /* Events Page */ 
 
-.dates {
+.event {
+    float: left;
+}
+
+#dateDisplay {
     width: 70px;
     margin: 0px;
     float: left;
-
 }
 
-#month {
+#monthDisplay {
     text-align: center;
     line-height: normal;
 
 }
 
-#day {
+#dayDisplay {
     font-size: 30px;
     line-height: 0px;
     text-align: center;
 }
-
 
 #title {
     text-align: left;
