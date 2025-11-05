@@ -1,5 +1,5 @@
 body {
-    background-color: #EDE6D6;
+    background-color: #FFFFFF;
     max-width: 200;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
@@ -20,7 +20,7 @@ p {
 }
 
 button {
-    width: 100px;
+    width: 80px;
 }
 
 select {
@@ -37,15 +37,15 @@ textarea {
 
 }
 
-#titleTextArea {
-    font-size: 22px;
+#titleTextArea, #monthTextArea, #dayTextArea {
+    font-size: 20px;
     height: 20px;
     min-height: 20px;
     max-height: 20px;
 }
 
 #entryTextArea {
-    font-size: 22px;
+    font-size: 20px;
     height: 400px;
     min-height: 400px;
     max-height: 400px;

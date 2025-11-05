@@ -5,25 +5,23 @@
         <link rel="stylesheet" href="editorStyle.css">
     <body>
         <div>
+            <button class="editor" id="prev">Previous</button>
+            <button class="editor" id="next">Next</button>
             <button class="editor" id="new">New</button>
             <button class="editor" id="save">Save</button>
             <button class="editor" id="delete">Delete</button>
         </div>
 
-        <label for="Date"></label>
+        <p>Month</p>     
+        <textarea id="monthTextArea"></textarea>
 
-        <select class="editor" id="entries">
-            <option></option>
-        </select>
-        <input class="editor" id="date" type="date" name="eventdate"/>
-
+        <p>Day</p>     
+        <textarea id="dayTextArea"></textarea>
 
         <p>Title</p>     
         <textarea id="titleTextArea"></textarea>
-           <p>Entry</p>     
 
+        <p>Entry</p>     
         <textarea id="entryTextArea"></textarea>
     </body>
-
-
 </html>

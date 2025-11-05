@@ -1,32 +1,53 @@
-
-
-
 /*
-This read/write is using JSONBIN.io API. 
+This read/write is implemented using JSONBIN.io API. 
 */
 
-const JSONKEY = '$2a$10$/gwTqpnXynsOyEwQx2cU/OaSa8UV.jLFntDbhUOck/9twV8sx5hV2';
+const MASTERKEY = '$2a$10$/gwTqpnXynsOyEwQx2cU/OaSa8UV.jLFntDbhUOck/9twV8sx5hV2';
+let req = new XMLHttpRequest();
 
 
+req.open("GET", "https://api.jsonbin.io/v3/b/68efc9b9ae596e708f1592ac", true);
+req.setRequestHeader("X-Master-Key", MASTERKEY);
+req.send();
+
+let editorIndex = 0;
+let JSONdata;
+
+req.onreadystatechange = () => {
+    if (req.readyState == XMLHttpRequest.DONE) {
+        console.log(req.responseText);
+
+        let data = req.responseText;
+        let parsed = JSON.parse(data);
+
+        JSONdata = parsed.record;
+        parseFromJSON(parsed.record.events[editorIndex]);
+
+    }
+};
+
+function parseFromJSON(data)
+{
+    // show value
+    document.getElementById('monthTextArea').innerText = data.eventMonth;
+    document.getElementById('dayTextArea').innerText = data.eventDay;
+    document.getElementById('titleTextArea').innerText = data.eventTitle;
+    document.getElementById('entryTextArea').innerText = data.eventContent;
+}   
+
+
+function showPrev()
+{
+    editorIndex--;
+    editorIndex = editorIndex % JSONdata.events.length;
+    parseFromJSON(JSONdata.events[editorIndex]);
+}
 
 function showNext()
 {
-
-}
-
-function loadEntryToList()
-{
-    // load entry into text editor
-    
-    let entries = document.getElementById("entries")
-
-    for (let i = 0; i < 10; i++)
-    {
-        // this should come from the JSON
-        let entry = new Option("option" + i, "option value");
-        entries.add(entry);
-    }
-
+    editorIndex++;
+    editorIndex = editorIndex % JSONdata.events.length;
+    parseFromJSON(JSONdata.events[editorIndex]);
 
 }
 
@@ -43,32 +64,40 @@ function createNewEntry()
 
 function saveEntry()
 {
-    // get values from text editor and save to json
-   // let date = document.getElementById("date").value;
-
-
-    console.log("save to JSON"); // meaning publish
-    let testString = JSON.stringify({
-        title: "title",
-        date: "date",
-        content: "content" 
-        })
+    let month = document.getElementById('monthTextArea').value;
+    let day = document.getElementById('dayTextArea').value;
+    let title = document.getElementById('titleTextArea').value;
+    let content = document.getElementById('entryTextArea').value;
     
-    console.log(testString);
-    const writePath = "entry.json";
+    // Update the specific entry in the JSONdata object
+    JSONdata.events[editorIndex] = {
+        eventMonth: month,
+        eventDay: day,
+        eventTitle: title,
+        eventContent: content
+    };
     
-
-    /*
-    fs.writePath(writePath, testString, (err) => {
-        if(err) {
-            console.log("Could not write file");
-        } else {
-            console.log("successfully written");
+    // Send PUT request to update the entire bin
+    let updateReq = new XMLHttpRequest();
+    updateReq.open("PUT", "https://api.jsonbin.io/v3/b/68efc9b9ae596e708f1592ac", true);
+    updateReq.setRequestHeader("Content-Type", "application/json");
+    updateReq.setRequestHeader("X-Master-Key", MASTERKEY);
+    
+    updateReq.onreadystatechange = () => {
+        if (updateReq.readyState == XMLHttpRequest.DONE) {
+            if (updateReq.status == 200) {
+                console.log("Successfully saved!");
+                console.log(updateReq.responseText);
+            } else {
+                console.error("Error saving:", updateReq.status, updateReq.responseText);
+            }
         }
-    });
-    */
-
+    };
+    
+    // Send the entire updated JSONdata object
+    updateReq.send(JSON.stringify(JSONdata));
 }
+
 
 function deleteEntry()
 {
@@ -80,10 +109,17 @@ function deleteEntry()
 }
 
 
+let prevButton = document.getElementById("prev");
+prevButton.addEventListener("click", () => {
+    showPrev();
+});
 
-loadEntryToList();
+let nextButton = document.getElementById("next");
+nextButton.addEventListener("click", () => {
+    showNext();
+});
+
 let newButton = document.getElementById("new");
-
 newButton.addEventListener("click", () => {
     createNewEntry();
 });
@@ -92,7 +128,6 @@ let deleteButton = document.getElementById("delete");
 newButton.addEventListener("click", () => {
 
 });
-
 
 let saveButton = document.getElementById("save");
 saveButton.addEventListener("click", () => {

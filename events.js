@@ -11,15 +11,14 @@ req.onreadystatechange = () => {
 
         let data = req.responseText;
         let parsed = JSON.parse(data);
-        createDateEntry(parsed.record.events.eventContent);
+        createDateEntry(parsed.record.events[0].eventContent);
+        createDateEntry(parsed.record.events[1].eventContent);
     }
 };
 
 req.open("GET", "https://api.jsonbin.io/v3/b/68efc9b9ae596e708f1592ac", true);
 req.setRequestHeader("X-Master-Key", MASTERKEY);
 req.send();
-
-
 
 function createDateEntry(text)
 {
