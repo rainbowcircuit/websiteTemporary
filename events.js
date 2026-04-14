@@ -1,53 +1,49 @@
-
-// this kind of works :(
-
 const MASTERKEY = '$2a$10$/gwTqpnXynsOyEwQx2cU/OaSa8UV.jLFntDbhUOck/9twV8sx5hV2';
-let req = new XMLHttpRequest();
 
+fetch('https://api.jsonbin.io/v3/b/68efc9b9ae596e708f1592ac', {
+    headers: { 'X-Master-Key': MASTERKEY }
+})
+.then(r => r.json())
+.then(data => {
+    data.record.events.forEach(ev => createDateEntry(ev));
+})
+.catch(err => console.error('Failed to load events:', err));
 
-req.onreadystatechange = () => {
-    if (req.readyState == XMLHttpRequest.DONE) {
-        console.log(req.responseText);
+function createDateEntry(data) {
+    const container = document.querySelector('.event');
 
-        let data = req.responseText;
-        let parsed = JSON.parse(data);
-        createDateEntry(parsed.record.events[0]);
-        createDateEntry(parsed.record.events[1]);
-    }
-};
+    const entry = document.createElement('div');
+    entry.className = 'event-entry';
 
-req.open("GET", "https://api.jsonbin.io/v3/b/68efc9b9ae596e708f1592ac", true);
-req.setRequestHeader("X-Master-Key", MASTERKEY);
-req.send();
+    const dateBlock = document.createElement('div');
+    dateBlock.className = 'date-block';
 
-function createDateEntry(data)
-{
-    let dateDiv = document.createElement('div');
-    dateDiv.id = "dateDisplay";
+    const month = document.createElement('span');
+    month.className = 'month';
+    month.textContent = data.eventMonth;
 
-    let month = document.createElement('p');
-    month.id = "month";
-    month.innerText = data.eventMonth;
+    const day = document.createElement('span');
+    day.className = 'day';
+    day.textContent = data.eventDay;
 
-    let day = document.createElement('p');
-    day.id = "day";
-    day.innerText = data.eventDay;
+    dateBlock.appendChild(month);
+    dateBlock.appendChild(day);
 
-    let title = document.createElement('h3');
-    title.id = "title"
-    title.innerText = data.eventContent;
+    const info = document.createElement('div');
+    info.className = 'event-info';
 
-    let content = document.createElement('p');
-    content.id = "content"
-    content.innerText = data.eventContent;
+    const title = document.createElement('h3');
+    title.className = 'event-title';
+    title.textContent = data.eventTitle;
 
-    dateDiv.appendChild(month);
-    dateDiv.appendChild(day);
+    const content = document.createElement('p');
+    content.className = 'event-content';
+    content.textContent = data.eventContent;
 
-    document.getElementsByClassName('event')[0].appendChild(dateDiv);
-    document.getElementsByClassName('event')[0].appendChild(title);
-    document.getElementsByClassName('event')[0].appendChild(content);
+    info.appendChild(title);
+    info.appendChild(content);
+
+    entry.appendChild(dateBlock);
+    entry.appendChild(info);
+    container.appendChild(entry);
 }
-
-//createDateEntry()
-
