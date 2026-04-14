@@ -120,6 +120,7 @@ nav a:hover {
 
 /* Bio Page */
 .bio-image {
+    width: 100%;
     max-width: 480px;
     margin: 0 auto 2rem;
 }
