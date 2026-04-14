@@ -1,27 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Content Editor</title>
-        <script src="editor.js" defer ></script>
-        <link rel="stylesheet" href="editorStyle.css">
-    <body>
-        <div>
-            <button class="editor" id="prev">Previous</button>
-            <button class="editor" id="next">Next</button>
-            <button class="editor" id="new">New</button>
-            <button class="editor" id="save">Save</button>
-            <button class="editor" id="delete">Delete</button>
-        </div>
+    <link rel="stylesheet" href="editorStyle.css">
+    <script src="editor.js" defer></script>
+</head>
+<body>
+    <div class="toolbar">
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+        <button id="new">New</button>
+        <button id="save">Save</button>
+        <button id="delete">Delete</button>
+    </div>
 
-        <p>Month</p>     
+    <div class="field-group">
+        <label for="monthTextArea">Month</label>
         <textarea id="monthTextArea"></textarea>
+    </div>
 
-        <p>Day</p>     
+    <div class="field-group">
+        <label for="dayTextArea">Day</label>
         <textarea id="dayTextArea"></textarea>
+    </div>
 
-        <p>Title</p>     
+    <div class="field-group">
+        <label for="titleTextArea">Title</label>
         <textarea id="titleTextArea"></textarea>
+    </div>
 
-        <p>Entry</p>     
+    <div class="field-group">
+        <label for="entryTextArea">Entry</label>
         <textarea id="entryTextArea"></textarea>
-    </body>
+    </div>
+</body>
 </html>
