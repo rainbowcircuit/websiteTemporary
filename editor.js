@@ -29,6 +29,7 @@ req.onreadystatechange = () => {
 function parseFromJSON(data)
 {
     // show value
+    document.getElementById('yearTextArea').innerText = data.eventYear || '';
     document.getElementById('monthTextArea').innerText = data.eventMonth;
     document.getElementById('dayTextArea').innerText = data.eventDay;
     document.getElementById('titleTextArea').innerText = data.eventTitle;
@@ -64,13 +65,15 @@ function createNewEntry()
 
 function saveEntry()
 {
+    let year = document.getElementById('yearTextArea').value;
     let month = document.getElementById('monthTextArea').value;
     let day = document.getElementById('dayTextArea').value;
     let title = document.getElementById('titleTextArea').value;
     let content = document.getElementById('entryTextArea').value;
-    
+
     // Update the specific entry in the JSONdata object
     JSONdata.events[editorIndex] = {
+        eventYear: year,
         eventMonth: month,
         eventDay: day,
         eventTitle: title,

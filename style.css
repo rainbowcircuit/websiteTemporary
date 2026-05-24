@@ -163,6 +163,59 @@ nav a:hover {
     line-height: 1.65;
 }
 
+.streaming-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.streaming-link {
+    font-size: 0.8rem;
+    border: 1px solid var(--green);
+    padding: 0.25rem 0.65rem;
+    text-decoration: none;
+    color: inherit;
+    letter-spacing: 0.05em;
+}
+
+.streaming-link:hover {
+    background-color: var(--green);
+    color: var(--bg);
+}
+
+/* Bio Page — AIJO roster */
+#bio2-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.roster {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+    margin: 1.5rem 0;
+}
+
+.roster-section h3 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+}
+
+.roster-section p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.roster-others {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--muted);
+}
+
 /* Events Page */
 h1.events-heading {
     margin-bottom: 1.5rem;
@@ -214,4 +267,48 @@ h1.events-heading {
     font-size: 0.9rem;
     color: var(--muted);
     margin-bottom: 0;
+}
+
+.year-filter-container {
+    margin-bottom: 1.5rem;
+}
+
+.year-filter-container select {
+    background: transparent;
+    border: 1px solid var(--green);
+    color: inherit;
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+}
+
+.year-heading {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1.5rem 0 0.25rem;
+}
+
+/* Footer */
+.site-footer {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 2.5rem 0 1.5rem;
+    margin-top: 3rem;
+    border-top: 1px solid var(--green);
+}
+
+.footer-link {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+}
+
+.footer-link:hover {
+    color: inherit;
 }

@@ -5,13 +5,54 @@ fetch('https://api.jsonbin.io/v3/b/68efc9b9ae596e708f1592ac', {
 })
 .then(r => r.json())
 .then(data => {
-    data.record.events.forEach(ev => createDateEntry(ev));
+    renderEvents(data.record.events);
 })
 .catch(err => console.error('Failed to load events:', err));
 
-function createDateEntry(data) {
+function renderEvents(events) {
     const container = document.querySelector('.event');
+    const select = document.getElementById('year-filter');
 
+    const byYear = {};
+    events.forEach(ev => {
+        const year = ev.eventYear || 'Unknown';
+        if (!byYear[year]) byYear[year] = [];
+        byYear[year].push(ev);
+    });
+
+    const years = Object.keys(byYear).sort((a, b) => b - a);
+
+    years.forEach(year => {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        select.appendChild(option);
+
+        const section = document.createElement('div');
+        section.className = 'year-section';
+        section.dataset.year = year;
+
+        const heading = document.createElement('h2');
+        heading.className = 'year-heading';
+        heading.textContent = year;
+        section.appendChild(heading);
+
+        byYear[year].forEach(ev => {
+            section.appendChild(createDateEntry(ev));
+        });
+
+        container.appendChild(section);
+    });
+
+    select.addEventListener('change', () => {
+        const selected = select.value;
+        document.querySelectorAll('.year-section').forEach(sec => {
+            sec.style.display = (selected === 'all' || sec.dataset.year === selected) ? '' : 'none';
+        });
+    });
+}
+
+function createDateEntry(data) {
     const entry = document.createElement('div');
     entry.className = 'event-entry';
 
@@ -45,5 +86,6 @@ function createDateEntry(data) {
 
     entry.appendChild(dateBlock);
     entry.appendChild(info);
-    container.appendChild(entry);
+
+    return entry;
 }
