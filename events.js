@@ -44,6 +44,20 @@ function renderEvents(events) {
         container.appendChild(section);
     });
 
+    const allOption = document.createElement('option');
+    allOption.value = 'all';
+    allOption.textContent = 'All Years';
+    select.appendChild(allOption);
+
+    // Default to latest year
+    const latestYear = years[0];
+    if (latestYear) {
+        select.value = latestYear;
+        document.querySelectorAll('.year-section').forEach(sec => {
+            sec.style.display = sec.dataset.year === latestYear ? '' : 'none';
+        });
+    }
+
     select.addEventListener('change', () => {
         const selected = select.value;
         document.querySelectorAll('.year-section').forEach(sec => {
