@@ -291,6 +291,70 @@ h1.events-heading {
     margin: 1.5rem 0 0.25rem;
 }
 
+/* Press Page */
+h1.press-heading {
+    margin-bottom: 2rem;
+}
+
+.press-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.press-entry {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--green);
+}
+
+.press-entry:last-child {
+    border-bottom: none;
+}
+
+.press-source {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+}
+
+.press-title {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.press-entry p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+}
+
+.press-entry p:last-child {
+    margin-bottom: 0;
+}
+
+.press-attribution {
+    font-size: 0.8rem !important;
+    color: var(--muted);
+    margin-top: 0.5rem;
+}
+
+.press-list-ordered {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    padding-left: 1.4rem;
+    margin-bottom: 0.75rem;
+}
+
+.press-quote blockquote {
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    border-left: 2px solid var(--green);
+    padding-left: 1rem;
+    margin-bottom: 0.75rem;
+}
+
 /* Publications */
 .pub-source {
     margin-bottom: 2.5rem;
